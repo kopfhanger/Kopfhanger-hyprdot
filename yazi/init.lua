@@ -10,18 +10,18 @@ local skip_labels = {
 
 local M = {}
 
-function M:peek()
+function M:peek(job)
 	local image_height = 0
 
-	if self:preload() == 1 then
-		local cache = ya.file_cache(self)
+	if job:preload() == 1 then
+		local cache = ya.file_cache(job)
 		if cache and fs.cha(cache).length > 0 then
-			image_height = ya.image_show(cache, self.area).h
+			image_height = ya.image_show(cache, job.area).h
 		end
 	end
 
 	local cmd = "mediainfo"
-	local output, code = Command(cmd):args({ tostring(self.file.url) }):stdout(Command.PIPED):output()
+	local output, code = Command(cmd):args({ tostring(job.file.url) }):stdout(Command.PIPED):output()
 
 	local lines = {}
 
@@ -43,11 +43,11 @@ function M:peek()
 			end
 
 			if line then
-				if i >= self.skip then
+				if i >= job.skip then
 					table.insert(lines, line)
 				end
 
-				local max_width = math.max(1, self.area.w - 3)
+				local max_width = math.max(1, job.area.w - 3)
 				i = i + math.max(1, math.ceil(line:width() / max_width))
 			end
 		end
@@ -57,7 +57,7 @@ function M:peek()
 	end
 
 	ya.preview_widgets(self, {
-		ui.Paragraph(
+		ui.Text(
 			ui.Rect({
 				x = self.area.x,
 				y = self.area.y + image_height,
@@ -65,7 +65,7 @@ function M:peek()
 				h = self.area.h - image_height,
 			}),
 			lines
-		):wrap(ui.Paragraph.WRAP),
+		):wrap(ui.Text.WRAP),
 	})
 end
 
@@ -80,8 +80,8 @@ function M:seek(units)
 	end
 end
 
-function M:preload()
-	local cache = ya.file_cache(self)
+function M:preload(job)
+	local cache = ya.file_cache(job)
 	if not cache or fs.cha(cache) then
 		return 1
 	end
@@ -93,7 +93,7 @@ function M:preload()
 		"-c",
 		"jpeg",
 		"-i",
-		tostring(self.file.url),
+		tostring(job.file.url),
 		"-o",
 		tostring(cache),
 		"-t",
