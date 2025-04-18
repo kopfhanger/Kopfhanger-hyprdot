@@ -16,25 +16,6 @@
         },
         "version": "2"
     },
-    "language_models": {
-        "kimi_ai": {
-            "api_url": "https://api.kimi.ai", // 替换为你的Kimi AI API地址
-            "default_model": "your-default-model", // 替换为你的默认模型
-            "low_speed_timeout_in_seconds": 30, // 设置低速超时时间
-            "available_models": [
-                {
-                    "name": "model1",
-                    "max_tokens": 1024,
-                    "max_output_tokens": 512
-                }
-                // {
-                //   "name": "model2",
-                //   "max_tokens": 2048,
-                //   "max_output_tokens": 1024
-                // }
-            ]
-        }
-    },
     "git": {
         // 启用 Git 集成功能
         "enabled": true,
@@ -64,9 +45,6 @@
             "position": "right"
         }
     },
-    // "auto_update_extensions": {
-    //   "catppuccin": false
-    // },
     "tab_bar": {
         "show": true,
         "show_nav_history_buttons": false
@@ -151,7 +129,7 @@
     "vim_mode": false,
     "base_keymap": "VSCode",
     "ui_font_family": "Noto Sans",
-    "buffer_font_family": "Maple Mono SC NF",
+    "buffer_font_family": "Maple Mono NF CN",
     "telemetry": {
         "diagnostics": false,
         "metrics": false

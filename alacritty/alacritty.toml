@@ -81,7 +81,7 @@ TERM = "xterm-256color"
 size = 12
 
 [font.normal]
-family = "Maple Mono SC NF"
+family = "Maple Mono NF CN"
 style = "Regular"
 
 [font.offset]
