@@ -9,11 +9,12 @@
     },
     "show_edit_predictions": true,
     "theme": "Catppuccin Mocha",
-    "agent": {
+    "assistant": {
         "default_model": {
             "provider": "zed.dev",
             "model": "claude-3-5-sonnet-latest"
-        }
+        },
+        "version": "2"
     },
     "git": {
         // 启用 Git 集成功能
@@ -128,7 +129,7 @@
     "vim_mode": false,
     "base_keymap": "VSCode",
     "ui_font_family": "Noto Sans",
-    "buffer_font_family": "Maple Mono NF",
+    "buffer_font_family": "Maple Mono NF CN",
     "telemetry": {
         "diagnostics": false,
         "metrics": false

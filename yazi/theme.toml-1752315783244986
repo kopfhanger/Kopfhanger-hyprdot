@@ -1,6 +1,6 @@
 # github.com/pahasara/HyprDots
 
-[mgr]
+[manager]
 cwd = { fg = "#33ccff" }
 
 # Hovered
