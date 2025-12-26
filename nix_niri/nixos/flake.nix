@@ -20,21 +20,26 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-wpsoffice-cn.url = "github:Beriholic/nix-wpsoffice-cn";
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = inputs@{ self, nixpkgs, zen-browser, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, zen-browser, home-manager, ... }:
   let
     lib = nixpkgs.lib;
     configDir = ./modules;
-    generatedModules = lib.map (file: "${configDir}/${file}") 
-      (lib.filter (file: lib.hasSuffix ".nix" file) 
+    generatedModules = lib.map (file: "${configDir}/${file}")
+      (lib.filter (file: lib.hasSuffix ".nix" file)
         (lib.attrNames (builtins.readDir configDir)));
   in
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
-      
+
       modules = [
         ./configuration.nix
 	home-manager.nixosModules.home-manager
@@ -49,10 +54,13 @@
           environment.systemPackages = with pkgs; [
             # 这里会自动合并原有的包列表
             inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
+            inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.wpsoffice-cn
+          ];
+          fonts.packages = with pkgs; [
+              inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.chinese-fonts
           ];
         })
-      ] ++ generatedModules; 
+      ] ++ generatedModules;
     };
   };
 }
-

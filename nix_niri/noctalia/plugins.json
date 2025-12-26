@@ -7,6 +7,9 @@
         }
     ],
     "states": {
+        "network-indicator": {
+            "enabled": true
+        }
     },
     "version": 1
 }

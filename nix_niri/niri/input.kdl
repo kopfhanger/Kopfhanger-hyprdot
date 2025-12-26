@@ -1,0 +1,23 @@
+// ================ 输入设备配置 ================
+input {
+    // 键盘设置
+    keyboard {
+        xkb {
+            layout "cn"      // 使用中式键盘布局
+        }
+        repeat-delay 300     // 按键重复延迟300ms
+        repeat-rate 30       // 按键重复速率30次/秒
+    }
+
+    // 触摸板设置
+    touchpad {
+        tap                  // 启用轻触点击
+        // natural-scroll       // 自然滚动方向（类似Mac）
+    }
+
+    // 鼠标设置
+    mouse {
+        // accel-profile "flat" // 平坦的鼠标加速曲线
+    }
+    focus-follows-mouse max-scroll-amount="0%" // 鼠标悬停聚焦窗口
+}

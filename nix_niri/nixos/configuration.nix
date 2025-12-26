@@ -1,12 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# 编辑此配置文件以定义应在您的系统上安装的内容。
+# 帮助信息可在 configuration.nix(5) 手册页
+# 及 NixOS 手册中找到（可通过运行 ‘nixos-help’ 访问）。
 
 { inputs, config, pkgs, lib, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ # 包括硬件扫描的结果。
       ./hardware-configuration.nix
     ];
 
@@ -15,9 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
-    efiSupport = true;      
+    efiSupport = true;
     device = "nodev";       # UEFI 固定写法
-    theme = inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
+    theme = inputs.nixos-grub-themes.packages.${pkgs.stdenv.hostPlatform.system}.nixos;
     useOSProber = true;     # 自动探测其他系统
     gfxmodeEfi = "auto";    # 自动检测最佳分辨率
   };
@@ -28,25 +28,26 @@
     "btrfs"         # 一些 Linux 发行版使用
     "ext4"          # 标准 Linux 文件系统
     "vfat"          # EFI 分区
+    "apfs"          # 苹果系统分区
   ];
 
-  # Use latest kernel.
+  # 使用最新内核
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos"; # 定义hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  # 启动网络
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # 设置时区
   time.timeZone = "Asia/Shanghai";
 
-  # Select internationalisation properties.
+  # 选择国际化属性
   i18n.defaultLocale = "zh_CN.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -61,32 +62,38 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  # Configure keymap in X11
+  # 配置X11中的按键映射
   services.xserver.xkb = {
     layout = "cn";
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # 定义用户账户. 不要忘记使用‘passwd’设置密码.
   users.users.kopfhanger = {
     isNormalUser = true;
     description = "kopfhanger";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "qemu" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" "disk" "video" "audio" ];
     packages = with pkgs; [];
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
+  # 允许非自由软件
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
+  # 在系统文件中列出要安装的软件. 要搜索，运行:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # 不要忘了安装编辑器以编辑configuration.nix! 已经默认安装了nano.
     os-prober
     efibootmgr
     grub2
   ];
+
+  # 设置vscode的wayland环境变量
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    APPIMAGE_EXTRACT_AND_RUN = "1";
+  };
 
   nix.settings = {
     substituters = [
@@ -103,15 +110,19 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  services.dbus.enable = true;
-  security.polkit.enable = true;
-
-  services.v2raya.enable = true;
   programs.fish.enable = true;
-  #services.onedrive.enable = true;
+  programs.nix-ld.enable = true;
+
+  security.polkit.enable = true;
+  security.soteria.enable = true;
 
   # List services that you want to enable:
+  services.dbus.enable = true;
+  services.udisks2.enable = true;
+  services.v2raya.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
+  #services.onedrive.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -125,7 +136,7 @@
       qt6.qtmultimedia
     ];
   };
-  # Enable sound with pipewire.
+  # 使用 Pipewire 启用声音。
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -133,7 +144,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true; 
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
@@ -144,7 +155,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Auto system update
+  # 自动系统更新
   system.autoUpgrade = {
     enable = true;
   };

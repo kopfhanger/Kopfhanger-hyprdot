@@ -1,0 +1,11 @@
+# PyTorch CPU 版本
+torch --index-url https://download.pytorch.org/whl/cpu
+
+# 数据科学包
+numpy
+pandas
+matplotlib
+scipy
+bayesian-optimization
+pyDOE
+hyperopt

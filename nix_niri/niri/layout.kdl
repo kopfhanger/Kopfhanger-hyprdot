@@ -1,0 +1,27 @@
+// ================ 布局与外观设置 ================
+layout {
+    gaps 5                   // 窗口间5像素间隙
+    background-color "transparent" // 透明workspace背景
+    center-focused-column "never" // 不自动居中聚焦的列
+    default-column-width { proportion 0.5; } // 默认宽度
+
+    // 预设列宽比例
+    preset-column-widths {
+        // proportion 0.33333  // 1/3宽度
+        proportion 0.5       // 1/2宽度
+        proportion 0.66667   // 2/3宽度
+        proportion 1.0       // 全宽
+    }
+
+    // 聚焦高亮环
+    focus-ring {
+        width 1.5
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    // 窗口边框样式
+    border {
+        off
+    }
+}

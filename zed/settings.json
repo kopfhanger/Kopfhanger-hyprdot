@@ -7,7 +7,7 @@
         "dock": "left" // 面板
     }, // 大纲面板
     "show_edit_predictions": true, // 显示编辑预测
-    "theme": "Catppuccin Espresso (Blur)", // 设定主题
+    "theme": "Catppuccin Espresso (Blur) [Heavy]", // 设定主题
     "agent": {
         "default_model": {
             "provider": "zed.dev",

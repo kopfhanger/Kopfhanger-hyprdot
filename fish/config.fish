@@ -16,3 +16,6 @@ set -gx QT_IM_MODULE fcitx
 set -gx XMODIFIERS @im=fcitx
 set -gx SDL_IM_MODULE fcitx
 set -gx GLFW_IM_MODULE ibus  # 某些游戏可能需要这个
+
+# Created by `pipx` on 2025-12-21 06:21:35
+set PATH $PATH /home/kopfhanger/.local/bin
