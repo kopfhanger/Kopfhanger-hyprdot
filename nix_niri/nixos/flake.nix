@@ -9,7 +9,7 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-     # inputs.quickshell.follows = "quickshell";
+      # inputs.quickshell.follows = "quickshell";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -21,10 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-wpsoffice-cn.url = "github:Beriholic/nix-wpsoffice-cn";
-    # nur = {
-    #   url = "github:nix-community/NUR";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = inputs@{ self, nixpkgs, zen-browser, home-manager, ... }:
@@ -54,7 +50,7 @@
           environment.systemPackages = with pkgs; [
             # 这里会自动合并原有的包列表
             inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-            inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.wpsoffice-cn
+            # inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.wpsoffice-cn
           ];
           fonts.packages = with pkgs; [
               inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.chinese-fonts

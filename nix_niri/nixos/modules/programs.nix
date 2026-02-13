@@ -47,7 +47,7 @@
  };
  programs.steam.enable = true;      # steam
 
- programs.thunar.plugins = with pkgs.xfce; [
+ programs.thunar.plugins = with pkgs; [
    thunar-archive-plugin
    thunar-volman
  ];

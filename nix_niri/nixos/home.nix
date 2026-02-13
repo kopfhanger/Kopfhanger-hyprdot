@@ -10,7 +10,6 @@
     code-nautilus     # 在此打开code
     qq                # qq
     swaylock          # 锁屏
-    zed-editor        # 代码编辑器
     evince            # 文档查看器
     obsidian          # 笔记管理软件
     thunderbird       # 邮件
@@ -26,10 +25,46 @@
     python3Packages.pip # 包管理
     gnuplot
     ocrmypdf
+    jujutsu
+    texstudio
+    # kazumi
+    telegram-desktop
+    gimp
+    qbittorrent
+    mission-center
+    inkscape
+    blender
+    libreoffice-fresh
+    lutris
+    protonplus
+    umu-launcher
+    nix-output-monitor
+    freefilesync
+    microsoft-edge
+    google-chrome
+    bazaar
+    obs-studio
+    zotero
+    xournalpp
+    wpsoffice-cn
   ];
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos/"; # sets NH_OS_FLAKE variable for you
+  };
 
   programs.vscode.enable = true;    # 代码编辑器
   programs.foot.enable = true;      # 终端
+
+  programs.zed-editor = {
+    enable = true;
+    package = pkgs.zed-editor.overrideAttrs (old: {
+      doCheck = false;
+    });
+  };
 
   programs.git = {
     enable = true;
@@ -49,12 +84,11 @@
       name = "Papirus";
     };
   };
-  # dconf.settings = {
-  #   "org/gnome/desktop/interface" = {
-  #     color-scheme = "prefer-dark";
-  #   };
-  # }; # 为nautilus配置主题
-  home.sessionVariables.GTK_THEME = "adw-gtk3-dark"; # 为nautilus配置主题
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  }; # 为nautilus配置主题
 
   qt.enable = true;
   qt.style.name = "adwaita-dark";

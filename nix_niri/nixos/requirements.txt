@@ -7,5 +7,7 @@ pandas
 matplotlib
 scipy
 bayesian-optimization
-pyDOE
+pyDOE3
 hyperopt
+pygad
+sophuspy

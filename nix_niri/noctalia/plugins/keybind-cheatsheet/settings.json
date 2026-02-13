@@ -1,0 +1,486 @@
+{
+  "detectedCompositor": "niri",
+  "cheatsheetData": [
+    {
+      "title": "Applications",
+      "binds": [
+        {
+          "keys": "Super + Return",
+          "desc": "打开 (Foot)"
+        },
+        {
+          "keys": "Super + T",
+          "desc": "打开 (Alacritty)"
+        },
+        {
+          "keys": "Super + D",
+          "desc": "Fuzzel"
+        },
+        {
+          "keys": "Super + B",
+          "desc": "zen-browser"
+        },
+        {
+          "keys": "Super + N",
+          "desc": "nautilus"
+        },
+        {
+          "keys": "Super + S",
+          "desc": "控制面板"
+        },
+        {
+          "keys": "Super + Comma",
+          "desc": "设置"
+        },
+        {
+          "keys": "Super + Alt + L",
+          "desc": "锁屏"
+        },
+        {
+          "keys": "Super + Space",
+          "desc": "应用启动器"
+        },
+        {
+          "keys": "Vol Up",
+          "desc": "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+\""
+        },
+        {
+          "keys": "Vol Down",
+          "desc": "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\""
+        },
+        {
+          "keys": "Mute",
+          "desc": "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\""
+        },
+        {
+          "keys": "Mic Mute",
+          "desc": "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\""
+        },
+        {
+          "keys": "Bright Up",
+          "desc": "Run: brightnessctl"
+        },
+        {
+          "keys": "Bright Down",
+          "desc": "Run: brightnessctl"
+        }
+      ]
+    },
+    {
+      "title": "Window Management",
+      "binds": [
+        {
+          "keys": "Super + Q",
+          "desc": "关闭窗口"
+        },
+        {
+          "keys": "Super + Shift + F",
+          "desc": "全屏窗口"
+        }
+      ]
+    },
+    {
+      "title": "Column Navigation",
+      "binds": [
+        {
+          "keys": "Super + Left",
+          "desc": "Focus Column Left"
+        },
+        {
+          "keys": "Super + Right",
+          "desc": "Focus Column Right"
+        },
+        {
+          "keys": "Super + H",
+          "desc": "Focus Column Left"
+        },
+        {
+          "keys": "Super + L",
+          "desc": "Focus Column Right"
+        },
+        {
+          "keys": "Super + Home",
+          "desc": "Focus Column First"
+        },
+        {
+          "keys": "Super + End",
+          "desc": "Focus Column Last"
+        },
+        {
+          "keys": "Super + WheelScrollRight",
+          "desc": "Focus Column Right"
+        },
+        {
+          "keys": "Super + WheelScrollLeft",
+          "desc": "Focus Column Left"
+        },
+        {
+          "keys": "Super + Shift + WheelScrollDown",
+          "desc": "Focus Column Right"
+        },
+        {
+          "keys": "Super + Shift + WheelScrollUp",
+          "desc": "Focus Column Left"
+        }
+      ]
+    },
+    {
+      "title": "Window Focus",
+      "binds": [
+        {
+          "keys": "Super + Down",
+          "desc": "Focus Window Down"
+        },
+        {
+          "keys": "Super + Up",
+          "desc": "Focus Window Up"
+        },
+        {
+          "keys": "Super + J",
+          "desc": "Focus Window Down"
+        },
+        {
+          "keys": "Super + K",
+          "desc": "Focus Window Up"
+        }
+      ]
+    },
+    {
+      "title": "Workspace Navigation",
+      "binds": [
+        {
+          "keys": "Super + 1",
+          "desc": "Focus Workspace 1"
+        },
+        {
+          "keys": "Super + 2",
+          "desc": "Focus Workspace 2"
+        },
+        {
+          "keys": "Super + 3",
+          "desc": "Focus Workspace 3"
+        },
+        {
+          "keys": "Super + 4",
+          "desc": "Focus Workspace 4"
+        },
+        {
+          "keys": "Super + 5",
+          "desc": "Focus Workspace 5"
+        },
+        {
+          "keys": "Super + 6",
+          "desc": "Focus Workspace 6"
+        },
+        {
+          "keys": "Super + 7",
+          "desc": "Focus Workspace 7"
+        },
+        {
+          "keys": "Super + 8",
+          "desc": "Focus Workspace 8"
+        },
+        {
+          "keys": "Super + 9",
+          "desc": "Focus Workspace 9"
+        },
+        {
+          "keys": "Super + Page_Down",
+          "desc": "Focus Workspace Down"
+        },
+        {
+          "keys": "Super + Page_Up",
+          "desc": "Focus Workspace Up"
+        },
+        {
+          "keys": "Super + U",
+          "desc": "Focus Workspace Down"
+        },
+        {
+          "keys": "Super + I",
+          "desc": "Focus Workspace Up"
+        },
+        {
+          "keys": "Super + WheelScrollDown",
+          "desc": "Focus Workspace Down"
+        },
+        {
+          "keys": "Super + WheelScrollUp",
+          "desc": "Focus Workspace Up"
+        }
+      ]
+    },
+    {
+      "title": "Move Columns",
+      "binds": [
+        {
+          "keys": "Super + Ctrl + Left",
+          "desc": "Move Column Left"
+        },
+        {
+          "keys": "Super + Ctrl + Right",
+          "desc": "Move Column Right"
+        },
+        {
+          "keys": "Super + Ctrl + H",
+          "desc": "Move Column Left"
+        },
+        {
+          "keys": "Super + Ctrl + L",
+          "desc": "Move Column Right"
+        },
+        {
+          "keys": "Super + Ctrl + Home",
+          "desc": "Move Column To First"
+        },
+        {
+          "keys": "Super + Ctrl + End",
+          "desc": "Move Column To Last"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + Left",
+          "desc": "Move Column To Monitor Left"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + Down",
+          "desc": "Move Column To Monitor Down"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + Up",
+          "desc": "Move Column To Monitor Up"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + Right",
+          "desc": "Move Column To Monitor Right"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + H",
+          "desc": "Move Column To Monitor Left"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + J",
+          "desc": "Move Column To Monitor Down"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + K",
+          "desc": "Move Column To Monitor Up"
+        },
+        {
+          "keys": "Super + Shift + Ctrl + L",
+          "desc": "Move Column To Monitor Right"
+        },
+        {
+          "keys": "Super + Ctrl + 1",
+          "desc": "Move Column To Workspace 1"
+        },
+        {
+          "keys": "Super + Ctrl + 2",
+          "desc": "Move Column To Workspace 2"
+        },
+        {
+          "keys": "Super + Ctrl + 3",
+          "desc": "Move Column To Workspace 3"
+        },
+        {
+          "keys": "Super + Ctrl + 4",
+          "desc": "Move Column To Workspace 4"
+        },
+        {
+          "keys": "Super + Ctrl + 5",
+          "desc": "Move Column To Workspace 5"
+        },
+        {
+          "keys": "Super + Ctrl + 6",
+          "desc": "Move Column To Workspace 6"
+        },
+        {
+          "keys": "Super + Ctrl + 7",
+          "desc": "Move Column To Workspace 7"
+        },
+        {
+          "keys": "Super + Ctrl + 8",
+          "desc": "Move Column To Workspace 8"
+        },
+        {
+          "keys": "Super + Ctrl + 9",
+          "desc": "Move Column To Workspace 9"
+        },
+        {
+          "keys": "Super + Ctrl + Page_Down",
+          "desc": "Move Column To Workspace Down"
+        },
+        {
+          "keys": "Super + Ctrl + Page_Up",
+          "desc": "Move Column To Workspace Up"
+        },
+        {
+          "keys": "Super + Ctrl + U",
+          "desc": "Move Column To Workspace Down"
+        },
+        {
+          "keys": "Super + Ctrl + I",
+          "desc": "Move Column To Workspace Up"
+        },
+        {
+          "keys": "Super + Ctrl + WheelScrollDown",
+          "desc": "Move Column To Workspace Down"
+        },
+        {
+          "keys": "Super + Ctrl + WheelScrollUp",
+          "desc": "Move Column To Workspace Up"
+        },
+        {
+          "keys": "Super + Ctrl + WheelScrollRight",
+          "desc": "Move Column Right"
+        },
+        {
+          "keys": "Super + Ctrl + WheelScrollLeft",
+          "desc": "Move Column Left"
+        },
+        {
+          "keys": "Super + Ctrl + Shift + WheelScrollDown",
+          "desc": "Move Column Right"
+        },
+        {
+          "keys": "Super + Ctrl + Shift + WheelScrollUp",
+          "desc": "Move Column Left"
+        }
+      ]
+    },
+    {
+      "title": "Move Windows",
+      "binds": [
+        {
+          "keys": "Super + Ctrl + Down",
+          "desc": "Move Window Down"
+        },
+        {
+          "keys": "Super + Ctrl + Up",
+          "desc": "Move Window Up"
+        },
+        {
+          "keys": "Super + Ctrl + J",
+          "desc": "Move Window Down"
+        },
+        {
+          "keys": "Super + Ctrl + K",
+          "desc": "Move Window Up"
+        }
+      ]
+    },
+    {
+      "title": "Column Management",
+      "binds": [
+        {
+          "keys": "Super + F",
+          "desc": "最大化窗口"
+        }
+      ]
+    },
+    {
+      "title": "Column Width",
+      "binds": [
+        {
+          "keys": "Super + R",
+          "desc": "切换列宽预设"
+        }
+      ]
+    },
+    {
+      "title": "System",
+      "binds": [
+        {
+          "keys": "Super + Shift + E",
+          "desc": "退出 Niri"
+        }
+      ]
+    },
+    {
+      "title": "Other",
+      "binds": [
+        {
+          "keys": "Super + Shift + Slash",
+          "desc": "捷键概览"
+        },
+        {
+          "keys": "Super + Shift + Left",
+          "desc": "Focus Monitor Left"
+        },
+        {
+          "keys": "Super + Shift + Down",
+          "desc": "Focus Monitor Down"
+        },
+        {
+          "keys": "Super + Shift + Up",
+          "desc": "Focus Monitor Up"
+        },
+        {
+          "keys": "Super + Shift + Right",
+          "desc": "Focus Monitor Right"
+        },
+        {
+          "keys": "Super + Shift + H",
+          "desc": "Focus Monitor Left"
+        },
+        {
+          "keys": "Super + Shift + J",
+          "desc": "Focus Monitor Down"
+        },
+        {
+          "keys": "Super + Shift + K",
+          "desc": "Focus Monitor Up"
+        },
+        {
+          "keys": "Super + Shift + L",
+          "desc": "Focus Monitor Right"
+        },
+        {
+          "keys": "Super + Shift + Page_Down",
+          "desc": "Move Workspace Down"
+        },
+        {
+          "keys": "Super + Shift + Page_Up",
+          "desc": "Move Workspace Up"
+        },
+        {
+          "keys": "Super + Shift + U",
+          "desc": "Move Workspace Down"
+        },
+        {
+          "keys": "Super + Shift + I",
+          "desc": "Move Workspace Up"
+        },
+        {
+          "keys": "Super + V",
+          "desc": "切换浮动/平铺"
+        },
+        {
+          "keys": "Super + Shift + V",
+          "desc": "切换浮动/平铺焦点"
+        },
+        {
+          "keys": "Super + C",
+          "desc": "居中列"
+        },
+        {
+          "keys": "Super + O",
+          "desc": "窗口预览 (Toggle Overview)"
+        },
+        {
+          "keys": "Super + BracketLeft",
+          "desc": "窗口靠左侧"
+        },
+        {
+          "keys": "Super + BracketRight",
+          "desc": "窗口靠右侧"
+        }
+      ]
+    }
+  ],
+  "niriConfigPath": "~/.config/niri/binds.kdl",
+  "hyprlandConfigPath": "~/.config/hypr/keybind.conf",
+  "windowHeight": 850,
+  "windowWidth": 1400,
+  "autoHeight": false,
+  "columnCount": 4
+}
