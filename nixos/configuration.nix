@@ -28,7 +28,7 @@
     "btrfs"         # 一些 Linux 发行版使用
     "ext4"          # 标准 Linux 文件系统
     "vfat"          # EFI 分区
-    "apfs"          # 苹果系统分区
+    # "apfs"          # 苹果系统分区
   ];
 
   # 使用最新内核

@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Commons
+import qs.Services.UI
 import qs.Widgets
 
 ColumnLayout {
@@ -20,7 +21,6 @@ ColumnLayout {
 
   // Reference to Main.qml instance for centralized data management
   readonly property var mainInstance: pluginApi?.mainInstance
-
 
   spacing: Style.marginL
 
@@ -332,6 +332,16 @@ ColumnLayout {
     }
   }
 
+  function isPageNameUnique(name, excludeIndex) {
+    var pages = pluginApi?.pluginSettings?.pages || [];
+    var lowerName = name.toLowerCase().trim();
+    for (var i = 0; i < pages.length; i++) {
+      if (i !== excludeIndex && pages[i].name.toLowerCase().trim() === lowerName) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   function addPage() {
     var name = newPageInput.text.trim();

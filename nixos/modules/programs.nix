@@ -33,7 +33,7 @@
     sddm-astronaut                  # sddm主题
     xwayland-satellite              # xwayland支持
     onedrive                        # 网盘
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
  ];
 

@@ -38,22 +38,22 @@
 
       modules = [
         ./configuration.nix
-	home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.kopfhanger = import ./home.nix;
-            home-manager.extraSpecialArgs = inputs;
-          }
-
-        ({ pkgs, inputs, ... }: {
+	      home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.kopfhanger = import ./home.nix;
+          home-manager.extraSpecialArgs = inputs;
+        }
+                                                                                                                                                                                                                                                                                                                                                                                                  
+        ({ pkgs, inputs, ... }: let
+          system = pkgs.stdenv.hostPlatform.system;  # 获取当前系统架构
+        in {
           environment.systemPackages = with pkgs; [
-            # 这里会自动合并原有的包列表
-            inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-            # inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.wpsoffice-cn
+            inputs.zen-browser.packages.${system}.default
+            # inputs.nix-wpsoffice-cn.packages.${system}.wpsoffice-cn
           ];
           fonts.packages = with pkgs; [
-              inputs.nix-wpsoffice-cn.packages.${stdenv.hostPlatform.system}.chinese-fonts
+            inputs.nix-wpsoffice-cn.packages.${system}.chinese-fonts
           ];
         })
       ] ++ generatedModules;

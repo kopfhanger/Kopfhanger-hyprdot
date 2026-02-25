@@ -24,7 +24,7 @@
     python3           # 编程
     python3Packages.pip # 包管理
     gnuplot
-    ocrmypdf
+    # ocrmypdf
     jujutsu
     texstudio
     # kazumi
