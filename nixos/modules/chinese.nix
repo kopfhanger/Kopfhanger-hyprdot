@@ -30,6 +30,14 @@
    fcitx5.waylandFrontend = true;
   };
 
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "ibus"; # 有些现代应用需要此设置
+  };
+
   # 中文字体优化
   fonts = {
   packages = with pkgs; [

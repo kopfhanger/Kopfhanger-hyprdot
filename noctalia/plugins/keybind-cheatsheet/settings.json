@@ -39,30 +39,6 @@
         {
           "keys": "Super + Space",
           "desc": "应用启动器"
-        },
-        {
-          "keys": "Vol Up",
-          "desc": "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+\""
-        },
-        {
-          "keys": "Vol Down",
-          "desc": "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\""
-        },
-        {
-          "keys": "Mute",
-          "desc": "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\""
-        },
-        {
-          "keys": "Mic Mute",
-          "desc": "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\""
-        },
-        {
-          "keys": "Bright Up",
-          "desc": "Run: brightnessctl"
-        },
-        {
-          "keys": "Bright Down",
-          "desc": "Run: brightnessctl"
         }
       ]
     },
@@ -82,22 +58,6 @@
     {
       "title": "Column Navigation",
       "binds": [
-        {
-          "keys": "Super + Left",
-          "desc": "Focus Column Left"
-        },
-        {
-          "keys": "Super + Right",
-          "desc": "Focus Column Right"
-        },
-        {
-          "keys": "Super + H",
-          "desc": "Focus Column Left"
-        },
-        {
-          "keys": "Super + L",
-          "desc": "Focus Column Right"
-        },
         {
           "keys": "Super + Home",
           "desc": "Focus Column First"
@@ -121,27 +81,6 @@
         {
           "keys": "Super + Shift + WheelScrollUp",
           "desc": "Focus Column Left"
-        }
-      ]
-    },
-    {
-      "title": "Window Focus",
-      "binds": [
-        {
-          "keys": "Super + Down",
-          "desc": "Focus Window Down"
-        },
-        {
-          "keys": "Super + Up",
-          "desc": "Focus Window Up"
-        },
-        {
-          "keys": "Super + J",
-          "desc": "Focus Window Down"
-        },
-        {
-          "keys": "Super + K",
-          "desc": "Focus Window Up"
         }
       ]
     },
@@ -198,14 +137,6 @@
         },
         {
           "keys": "Super + I",
-          "desc": "Focus Workspace Up"
-        },
-        {
-          "keys": "Super + WheelScrollDown",
-          "desc": "Focus Workspace Down"
-        },
-        {
-          "keys": "Super + WheelScrollUp",
           "desc": "Focus Workspace Up"
         }
       ]
@@ -319,14 +250,6 @@
         },
         {
           "keys": "Super + Ctrl + I",
-          "desc": "Move Column To Workspace Up"
-        },
-        {
-          "keys": "Super + Ctrl + WheelScrollDown",
-          "desc": "Move Column To Workspace Down"
-        },
-        {
-          "keys": "Super + Ctrl + WheelScrollUp",
           "desc": "Move Column To Workspace Up"
         },
         {
@@ -455,24 +378,8 @@
           "desc": "切换浮动/平铺"
         },
         {
-          "keys": "Super + Shift + V",
-          "desc": "切换浮动/平铺焦点"
-        },
-        {
           "keys": "Super + C",
           "desc": "居中列"
-        },
-        {
-          "keys": "Super + O",
-          "desc": "窗口预览 (Toggle Overview)"
-        },
-        {
-          "keys": "Super + BracketLeft",
-          "desc": "窗口靠左侧"
-        },
-        {
-          "keys": "Super + BracketRight",
-          "desc": "窗口靠右侧"
         }
       ]
     }
@@ -482,5 +389,6 @@
   "windowHeight": 850,
   "windowWidth": 1400,
   "autoHeight": false,
-  "columnCount": 4
+  "columnCount": 4,
+  "modKeyVariable": "$mod"
 }

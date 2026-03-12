@@ -24,10 +24,10 @@
     python3           # 编程
     python3Packages.pip # 包管理
     gnuplot
-    # ocrmypdf
+    ocrmypdf
     jujutsu
     texstudio
-    # kazumi
+    kazumi
     telegram-desktop
     gimp
     qbittorrent
@@ -47,23 +47,30 @@
     zotero
     xournalpp
     wpsoffice-cn
+    pdfarranger
+    freecad
+    julia
+    paraview
+    wechat
+    zola
   ];
 
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/etc/nixos/"; # sets NH_OS_FLAKE variable for you
+   flake = "/etc/nixos/"; # 为您设置 NH_OS_FLAKE 环境变量
   };
 
   programs.vscode.enable = true;    # 代码编辑器
   programs.foot.enable = true;      # 终端
+  programs.satty.enable = true;
 
   programs.zed-editor = {
     enable = true;
-    package = pkgs.zed-editor.overrideAttrs (old: {
-      doCheck = false;
-    });
+    # package = pkgs.zed-editor.overrideAttrs (old: {
+    #   doCheck = false;
+    # });
   };
 
   programs.git = {
@@ -76,17 +83,20 @@
     enable = true;
     theme = {
       package = pkgs.adw-gtk3;
-      name = "adw-gtk3-dark"; # 主题名称
+     name = "adw-gtk3-dark";
     };
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      # 可选变体：Papirus, Papirus-Dark, Papirus-Light
-      name = "Papirus";
+      # 确保 name 与 package 生成的图标主题名称一致
+     name = "Papirus";   # 根据你选择的 flavor 可能为 Papirus-Light 或 Papirus
+      package = pkgs.catppuccin-papirus-folders.override {
+       flavor = "latte";
+        accent = "yellow";
+      };
     };
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+     color-scheme = "prefer-dark";
     };
   }; # 为nautilus配置主题
 
