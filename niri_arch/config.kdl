@@ -1,0 +1,119 @@
+// ====================================================================
+// Niri 配置文件 (Arch Linux 版本)
+// 基于原 NixOS 配置改编
+// ====================================================================
+// 文件引用
+include "input.kdl"
+include "binds.kdl"
+include "layout.kdl"
+include "outputs.kdl"
+
+// 禁用客户端侧装饰 (CSD) 偏好
+prefer-no-csd
+
+
+
+// ================ 光标样式 ================
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+    // hide-when-typing
+    // hide-after-inactive-ms 1000
+}
+
+// ================ 背景墙纸与概览 (Noctalia) ================
+// 设置常规墙纸在背景层
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+// 禁用概览中的工作区阴影
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+// ================ 启动时自动运行的程序 ================
+// Noctalia 启动项 (Arch Linux 适配)
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+// ================ 环境变量设置 ================
+environment {
+    // Wayland 相关环境变量
+    MOZ_ENABLE_WAYLAND "1"   // Firefox 使用 Wayland
+    XDG_SESSION_TYPE "wayland"
+    GDK_BACKEND "wayland"    // GTK 应用使用 Wayland
+    QT_QPA_PLATFORMTHEME "qt6ct" // Qt 主题引擎
+    QT_QPA_PLATFORM "wayland;xcb" // Qt 平台插件
+
+    // 终端设置
+    TERM "foot"
+    TERMINAL "foot"
+
+    // 输入法 (如果需要)
+    // GTK_IM_MODULE "fcitx5"
+    // QT_IM_MODULE "fcitx5"
+    // XMODIFIERS "@im=fcitx5"
+}
+
+// ================ 工作区定义 ================
+workspace "a" { }
+workspace "b" { }
+workspace "c" { }
+
+
+// ================ Noctalia 窗口规则 ================
+
+// 默认窗口规则
+window-rule {
+    // 圆角设置
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+// 调试/激活设置
+debug {
+    // 允许通知操作和窗口激活
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Firefox 窗口规则
+window-rule {
+    match title="Firefox"
+    open-on-workspace "c"
+    open-maximized true
+}
+
+// ================ 近期窗口 ================
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 30
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
