@@ -38,6 +38,7 @@ overview {
 // ================ 启动时自动运行的程序 ================
 // Noctalia 启动项 (Arch Linux 适配)
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "utools" "-d"
 
 // ================ 环境变量设置 ================
 environment {
@@ -69,7 +70,7 @@ workspace "c" { }
 // 默认窗口规则
 window-rule {
     // 圆角设置
-    geometry-corner-radius 6
+    geometry-corner-radius 15
     clip-to-geometry true
 }
 

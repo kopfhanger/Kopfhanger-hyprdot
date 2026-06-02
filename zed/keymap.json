@@ -16,22 +16,22 @@
             "ctrl-alt-r": "task::Rerun",
             // "ctrl-alt-o": "zed::OpenLocalTasks",
             "ctrl-\\": "workspace::NewCenterTerminal",
-            "ctrl-t": "terminal_panel::ToggleFocus"
-        }
+            "ctrl-t": "terminal_panel::ToggleFocus",
+        },
     },
     {
         "context": "Workspace",
         "bindings": {
-            "shift shift": "workspace::NewSearch"
-        }
+            "shift shift": "workspace::NewSearch",
+        },
     },
     {
         "context": "Editor",
         "bindings": {
             "ctrl-a": "editor::SelectAll",
             "ctrl-w": "pane::CloseActiveItem",
-            "alt-enter": "editor::ToggleCodeActions"
-        }
+            "alt-enter": "editor::ToggleCodeActions",
+        },
     },
     {
         "context": "Editor && VimControl && !VimWaiting && !menu",
@@ -52,7 +52,7 @@
             "space f q": "file_finder::Toggle",
             "space g [": "editor::GoToPreviousHunk",
             "space g ]": "editor::GoToHunk",
-            "space g b": "editor::ToggleGitBlame",
+            // "space g b": "editor::ToggleGitBlame",
             // "space g d": "editor::ToggleHunkDiff",
             "space g r": "editor::ToggleSelectedDiffHunks",
             "space m o": "markdown::OpenPreview",
@@ -63,8 +63,8 @@
             "space w k": "pane::SplitUp",
             "space w j": "pane::SplitDown",
             "space w h": "pane::SplitLeft",
-            "space w l": "pane::SplitRight"
-        }
+            "space w l": "pane::SplitRight",
+        },
     },
     {
         "context": "ProjectPanel && not_editing",
@@ -79,8 +79,8 @@
             "r": "project_panel::Rename",
             "x": "project_panel::Cut",
             "y p": "workspace::CopyPath",
-            "y r": "workspace::CopyRelativePath"
-        }
+            "y r": "workspace::CopyRelativePath",
+        },
     },
     {
         "context": "Dock || Terminal || Editor",
@@ -88,13 +88,13 @@
             "ctrl-h": "workspace::ActivatePaneLeft",
             "ctrl-l": "workspace::ActivatePaneRight",
             "ctrl-k": "workspace::ActivatePaneUp",
-            "ctrl-j": "workspace::ActivatePaneDown"
-        }
+            "ctrl-j": "workspace::ActivatePaneDown",
+        },
     },
     {
         "context": "Terminal",
         "bindings": {
-            "ctrl-t": "workspace::ToggleBottomDock"
-        }
-    }
+            "ctrl-t": "workspace::ToggleBottomDock",
+        },
+    },
 ]

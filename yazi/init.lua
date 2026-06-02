@@ -1,114 +1,59 @@
-local skip_labels = {
-	["Complete name"] = true,
-	["CompleteName_Last"] = true,
-	["Unique ID"] = true,
-	["File size"] = true,
-	["Format/Info"] = true,
-	["Codec ID/Info"] = true,
-	["MD5 of the unencoded content"] = true,
+local catppuccin_palette = {
+	rosewater = "#f4dbd6",
+	flamingo = "#f0c6c6",
+	pink = "#f5bde6",
+	mauve = "#c6a0f6",
+	red = "#ed8796",
+	maroon = "#ee99a0",
+	peach = "#f5a97f",
+	yellow = "#eed49f",
+	green = "#a6da95",
+	teal = "#8bd5ca",
+	sky = "#91d7e3",
+	sapphire = "#7dc4e4",
+	blue = "#8aadf4",
+	lavender = "#b7bdf8",
+	text = "#cad3f5",
+	subtext1 = "#b8c0e0",
+	subtext0 = "#a5adcb",
+	overlay2 = "#939ab7",
+	overlay1 = "#8087a2",
+	overlay0 = "#6e738d",
+	surface2 = "#5b6078",
+	surface1 = "#494d64",
+	surface0 = "#363a4f",
+	base = "#24273a",
+	mantle = "#1e2030",
+	crust = "#181926",
 }
 
-local M = {}
+-- Plugins
+require("full-border"):setup({
+	type = ui.Border.ROUNDED,
+})
 
-function M:peek(job)
-	local image_height = 0
+require("zoxide"):setup({
+	update_db = false,
+})
 
-	if job:preload() == 1 then
-		local cache = ya.file_cache(job)
-		if cache and fs.cha(cache).length > 0 then
-			image_height = ya.image_show(cache, job.area).h
-		end
-	end
+require("session"):setup({
+	sync_yanked = true,
+})
 
-	local cmd = "mediainfo"
-	local output, code = Command(cmd):args({ tostring(job.file.url) }):stdout(Command.PIPED):output()
+require("searchjump"):setup({
+	unmatch_fg = catppuccin_palette.overlay0,
+	match_str_fg = catppuccin_palette.green,
+	match_str_bg = catppuccin_palette.base,
+	first_match_str_fg = catppuccin_palette.lavender,
+	first_match_str_bg = catppuccin_palette.base,
+	lable_fg = catppuccin_palette.lavender,
+	lable_bg = catppuccin_palette.base,
+	only_current = false, -- only search the current window
+	show_search_in_statusbar = true,
+	auto_exit_when_unmatch = false,
+	enable_capital_lable = true,
+})
 
-	local lines = {}
+require("git"):setup()
 
-	if output then
-		local i = 0
-		for str in output.stdout:gmatch("[^\n]*") do
-			local label, value = str:match("(.*[^ ])  +: (.*)")
-			local line
-
-			if label then
-				if not skip_labels[label] then
-					line = ui.Line({
-						ui.Span(label .. ": "):bold(),
-						ui.Span(value),
-					})
-				end
-			elseif str ~= "General" then
-				line = ui.Line({ ui.Span(str):underline() })
-			end
-
-			if line then
-				if i >= job.skip then
-					table.insert(lines, line)
-				end
-
-				local max_width = math.max(1, job.area.w - 3)
-				i = i + math.max(1, math.ceil(line:width() / max_width))
-			end
-		end
-	else
-		local error = string.format("Spawn `%s` command returns %s", cmd, code)
-		table.insert(lines, ui.Line(error))
-	end
-
-	ya.preview_widgets(self, {
-		ui.Text(
-			ui.Rect({
-				x = self.area.x,
-				y = self.area.y + image_height,
-				w = self.area.w,
-				h = self.area.h - image_height,
-			}),
-			lines
-		):wrap(ui.Text.WRAP),
-	})
-end
-
-function M:seek(units)
-	local h = cx.active.current.hovered
-	if h and h.url == self.file.url then
-		local step = math.floor(units * self.area.h / 10)
-		ya.manager_emit("peek", {
-			math.max(0, cx.active.preview.skip + step),
-			only_if = self.file.url,
-		})
-	end
-end
-
-function M:preload(job)
-	local cache = ya.file_cache(job)
-	if not cache or fs.cha(cache) then
-		return 1
-	end
-
-	local cmd = "ffmpegthumbnailer"
-	local child, code = Command(cmd):args({
-		"-q",
-		"6",
-		"-c",
-		"jpeg",
-		"-i",
-		tostring(job.file.url),
-		"-o",
-		tostring(cache),
-		"-t",
-		"5",
-		"-s",
-		tostring(PREVIEW.max_width),
-	}):spawn()
-
-	if not child then
-		ya.err(string.format("spawn `%s` command returns %s", cmd, code))
-		return 0
-	end
-
-	local status = child:wait()
-	return status and status.success and 1 or 2
-end
-
-return M
+require("starship"):setup()

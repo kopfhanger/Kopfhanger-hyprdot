@@ -7,6 +7,7 @@ binds {
     Mod+B hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
     Mod+N hotkey-overlay-title="nautilus" { spawn "nautilus"; }
     Alt+J hotkey-overlay-title="区域截图" { spawn-sh "grim -g \"$(slurp)\" - | satty -f - --initial-tool=line --copy-command=wl-copy --actions-on-escape save-to-clipboard,exit --brush-smooth-history-size=5 --output-filename ~/$(date '+%Y%m%d-%H:%M:%S').png"; }
+    // Alt+Space hotkey-overlay-title="utools" { spawn "utools"; }
 
     // -------- Noctalia 特有绑定 (Arch Linux 适配版) --------
     // 使用 qs -c noctalia-shell ipc call 格式

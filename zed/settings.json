@@ -1,7 +1,20 @@
 {
+    "proxy": "",
+    "cli_default_open_behavior": "existing_window",
+    "collaboration_panel": {
+        "dock": "left",
+    },
+    "git_panel": {
+        "dock": "left",
+    },
+    "agent_servers": {
+        "qwen-code": {
+            "type": "registry",
+        },
+    },
     "icon_theme": "Catppuccin Mocha", // 设定图标主题
-    "features": {
-        "edit_prediction_provider": "supermaven", // 编辑预测提供程序
+    "edit_predictions": {
+        "provider": "zed", // 编辑预测提供程序
     },
     "outline_panel": {
         "dock": "left", // 面板
@@ -9,11 +22,12 @@
     "show_edit_predictions": true, // 显示编辑预测
     "theme": "Catppuccin Espresso (Blur) [Heavy]", // 设定主题
     "agent": {
+        "dock": "right",
         "default_model": {
             "provider": "deepseek",
-            "model": "deepseek-chat"
+            "model": "deepseek-chat",
         },
-        "model_parameters": []
+        "model_parameters": [],
     },
     "git": {
         "branch_picker": null, // 在分支选择器中显示哪些信息。
@@ -45,7 +59,7 @@
     "ui_font_family": "Noto Sans", // ui字体
     "buffer_font_family": "Maple Mono NF", // 编辑区字体
     "ui_font_size": 15,
-    "buffer_font_size": 14,
+    "buffer_font_size": 14.0,
     "telemetry": {
         "diagnostics": false, // 发送调试信息，如崩溃报告。
         "metrics": false, // 发送匿名的使用数据，比如你使用Zed的语言。
@@ -54,8 +68,22 @@
         "show": "auto",
     },
     "format_on_save": "on", // 是否在保存前执行缓冲区格式。
-    "file_scan_exclusions": [".git", ".next", ".turbo", "node_modules", "dist"], // 完全忽略与‘ file_scan_exclections ’匹配的文件。覆盖“file_scan_inclusions”。
+    "file_scan_exclusions": [
+        ".git",
+        ".next",
+        ".turbo",
+        "node_modules",
+        "dist",
+        "**/*.aux",
+        "**/*.fdb_latexmk",
+        "**/*.fls",
+        "**/*.log",
+        "**/*.out",
+        "**/*.xdv",
+        "**/*.toc",
+    ], // 完全忽略与‘ file_scan_exclections ’匹配的文件。覆盖“file_scan_inclusions”。
     "project_panel": {
+        "dock": "left",
         "scrollbar": {
             "show": "auto",
         },
@@ -70,15 +98,19 @@
         },
         "Python": {
             "show_edit_predictions": true,
-            "language_servers": ["ty", "pyright", "ruff"],
+            "language_servers": ["ty", "!basedpyright", "ruff"],
             "format_on_save": "on",
             "formatter": [
-                { "language_server": { "name": "ruff" } },
                 {
-                    "code_actions": {
-                        "source.fixAll.ruff": true,
-                        "source.organizeImports.ruff": true,
+                    "language_server": {
+                        "name": "ruff",
                     },
+                },
+                {
+                    "code_action": "source.fixAll.ruff",
+                },
+                {
+                    "code_action": "source.organizeImports.ruff",
                 },
             ],
         },
@@ -124,6 +156,7 @@
         "TOML": ["MyLockFile"], // 将名为“MyLockFile”的文件识别为 TOML
         "Dockerfile": ["Dockerfile*"], // 将 Dockerfile 语法应用于任何以“Dockerfile”开头的文件
         "Nix": ["conf"], // 将 .conf 文件视为 nix 文件 而不是 .ini 文件
+        "Shell Script": ["zathurarc"], // 将rc文件视为shell脚本文件
     },
     "lsp": {
         "clangd": {
@@ -217,80 +250,36 @@
             "settings": {
                 "texlab": {
                     "build": {
-                        // "command": "latexmk",
-                        // "args": [
-                        //     "-xelatex",
-                        //     "-synctex=1",
-                        //     "-interaction=nonstopmode",
-                        //     "-file-line-error",
-                        //     "-pdf",
-                        //     "%f"
-                        // ],
+                        "executable": "latexmk",
+                        "args": [
+                            "-xelatex",
+                            "-file-line-error",
+                            "-interaction=nonstopmode",
+                            "-synctex=1",
+                            "%f",
+                        ],
                         "onSave": true,
                         "forwardSearchAfter": true,
-                        "recipe": "xelatex-bibtex-xelatex-xelatex-clean",
                     },
-                    "recipes": [
-                        {
-                            "name": "xelatex-bibtex-xelatex-xelatex-clean",
-                            "commands": [
-                                {
-                                    "command": "xelatex",
-                                    "args": [
-                                        "-synctex=1",
-                                        "-interaction=nonstopmode",
-                                        "%f",
-                                    ],
-                                },
-                                {
-                                    "command": "bibtex",
-                                    "args": ["%f.aux"],
-                                },
-                                {
-                                    "command": "xelatex",
-                                    "args": [
-                                        "-synctex=1",
-                                        "-interaction=nonstopmode",
-                                        "%f",
-                                    ],
-                                },
-                                {
-                                    "command": "xelatex",
-                                    "args": [
-                                        "-synctex=1",
-                                        "-interaction=nonstopmode",
-                                        "%f",
-                                    ],
-                                },
-                                {
-                                    "command": "latexmk",
-                                    "args": ["-c", "%f"],
-                                },
-                            ],
-                        },
-                        // {
-                        //     "command": "tectonic",
-                        //     "args": [
-                        //         "-X",
-                        //         "compile",
-                        //         "%f",
-                        //         "--synctex",
-                        //         "--keep-logs",
-                        //         "--keep-intermediates"
-                        //     ]
-                        // }
-                    ],
                     "forwardSearch": {
                         "executable": "zathura",
-                        "args": [
-                            "--synctex-forward",
-                            "%l:1:%f",
-                            "-x",
-                            "zed %%{input}:%%{line}",
-                            "%p",
-                        ],
+                        "args": ["--synctex-forward", "%l:1:%f", "%p"],
                     },
                 },
+                "chktex": {
+                    "onOpenAndSave": true,
+                    "onEdit": false,
+                },
+                "diagnostics": {
+                    "delay": 500,
+                    "ignoredPatterns": [],
+                },
+                "inlayHints": {
+                    "labelDefinitions": true,
+                    "labelReferences": true,
+                },
+                "bibtexFormatter": "texlab",
+                "formatterLineLength": 80,
             },
         },
     },
